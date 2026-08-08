@@ -51,3 +51,4 @@ desktop.ini
 # Local secrets and scratch files
 *.local.json
 scratch/
+/src/CipherDesk.App/Properties/PublishProfiles/FolderProfile.pubxml
