@@ -1,0 +1,92 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  # The engine has no Windows dependency, so its tests run on the cheaper, faster runner.
+  # If this job ever fails to build on Linux, something has leaked a UI reference into Core.
+  engine:
+    name: Engine tests (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore tests/CipherDesk.Core.Tests/CipherDesk.Core.Tests.csproj
+
+      - name: Build
+        run: >
+          dotnet build tests/CipherDesk.Core.Tests/CipherDesk.Core.Tests.csproj
+          -c Release --no-restore
+
+      - name: Test
+        run: >
+          dotnet test tests/CipherDesk.Core.Tests/CipherDesk.Core.Tests.csproj
+          -c Release --no-build --logger "trx;LogFileName=engine.trx"
+          --collect:"XPlat Code Coverage" --results-directory artifacts/test-results
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-linux
+          path: artifacts/test-results
+          if-no-files-found: ignore
+
+  # The full solution, including the WinForms project, only builds on Windows.
+  app:
+    name: Full solution (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore
+
+      # AnalysisLevel is latest-recommended in Directory.Build.props, so this surfaces the
+      # analyzer rules configured in .editorconfig, including the crypto rules raised to error.
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test
+        run: >
+          dotnet test -c Release --no-build
+          --logger "trx;LogFileName=solution.trx"
+          --results-directory artifacts/test-results
+
+      - name: Smoke check the published output
+        run: |
+          dotnet publish src/CipherDesk.App -c Release -r win-x64 `
+            -p:PublishSingleFile=true -p:SelfContained=true `
+            -o artifacts/smoke
+          if (-not (Test-Path artifacts/smoke/CipherDesk.exe)) {
+            Write-Error "CipherDesk.exe was not produced"
+            exit 1
+          }
+        shell: pwsh
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-windows
+          path: artifacts/test-results
+          if-no-files-found: ignore

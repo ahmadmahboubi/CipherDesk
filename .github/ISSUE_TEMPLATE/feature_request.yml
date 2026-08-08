@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest something CipherDesk should do
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve
+      description: Describe the situation you are in, not the solution you have in mind.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like it to do
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you tried instead
+      description: Existing workarounds, or other tools that handle this well.
+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Please confirm
+      options:
+        - label: This does not require adding a runtime dependency, or I have explained why one is worth it
+        - label: This does not change the legacy v1 format, which is frozen for compatibility

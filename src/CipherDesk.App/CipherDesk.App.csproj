@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>CipherDesk.App</RootNamespace>
+    <AssemblyName>CipherDesk</AssemblyName>
+    <Description>CipherDesk - a modern desktop utility for AES text and file encryption.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Label="WinForms application configuration">
+    <!-- Consumed by the WinForms source generator to emit ApplicationConfiguration.Initialize(). -->
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationVisualStylesEnabled>true</ApplicationVisualStylesEnabled>
+    <ApplicationUseCompatibleTextRendering>false</ApplicationUseCompatibleTextRendering>
+    <ApplicationDefaultFont>Segoe UI, 9.75pt</ApplicationDefaultFont>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Guarded so a fork that has not generated the icon yet still builds. -->
+    <ApplicationIcon Condition="Exists('..\..\assets\icons\cipherdesk.ico')">..\..\assets\icons\cipherdesk.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Publish">
+    <!-- Single-file, self-contained publishing is configured in .github/workflows/release.yml. -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <PublishReadyToRun Condition="'$(Configuration)' == 'Release'">true</PublishReadyToRun>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CipherDesk.Core\CipherDesk.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The icon ships next to the exe as well, for the installer and shortcuts. -->
+    <None Include="..\..\assets\icons\cipherdesk.ico" Link="cipherdesk.ico" Condition="Exists('..\..\assets\icons\cipherdesk.ico')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

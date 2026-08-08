@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="CipherDesk logo">
+  <title>CipherDesk</title>
+  <defs>
+    <linearGradient id="cd-brand" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0%" stop-color="#8B7CF6"/>
+      <stop offset="100%" stop-color="#543FD4"/>
+    </linearGradient>
+    <radialGradient id="cd-sheen" cx="0.28" cy="0.1" r="0.85">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.20"/>
+      <stop offset="65%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Brand plate. rx is 22% of the edge, which matches the Windows 11 app-icon silhouette. -->
+  <rect width="256" height="256" rx="57" fill="url(#cd-brand)"/>
+  <rect width="256" height="256" rx="57" fill="url(#cd-sheen)"/>
+
+  <!-- Keyhole: one solid mass, no interior detail, so it survives being scaled to 16px. -->
+  <g fill="#ffffff">
+    <circle cx="128" cy="104" r="38"/>
+    <path d="M112 116 L144 116 L157 182 L99 182 Z"/>
+    <rect x="99" y="174" width="58" height="14" rx="7"/>
+    <!-- The desk: the second half of the name, and the visual base the keyhole rests on. -->
+    <rect x="72" y="208" width="112" height="10" rx="5"/>
+  </g>
+</svg>

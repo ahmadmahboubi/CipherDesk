@@ -1,0 +1,27 @@
+<Project>
+
+  <!-- Settings shared by every project in the repository. -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Product identity">
+    <Product>CipherDesk</Product>
+    <Company>CipherDesk</Company>
+    <Authors>CipherDesk contributors</Authors>
+    <Copyright>Copyright (c) CipherDesk contributors</Copyright>
+    <Version>2.0.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+</Project>

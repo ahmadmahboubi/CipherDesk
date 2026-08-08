@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>CipherDesk.Core</RootNamespace>
+    <AssemblyName>CipherDesk.Core</AssemblyName>
+    <Description>Cryptography engine for CipherDesk: AES-256-GCM text and file encryption with a backwards-compatible legacy reader.</Description>
+    <!-- Platform independent on purpose, so the engine can be unit tested on Linux CI runners. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="CipherDesk.Core.Tests" />
+  </ItemGroup>
+
+</Project>

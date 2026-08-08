@@ -1,0 +1,68 @@
+name: Bug report
+description: Something does not work the way it should
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never attach real encrypted data or a real password.** If you need to show a payload,
+        reproduce the problem with a throwaway password and throwaway content first.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the Files workspace
+        2. Drop a 3 GB file onto the window
+        3. Press Encrypt
+        4. …
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: CipherDesk version
+      description: Shown in the About dialog (F1)
+      placeholder: 2.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Windows version
+      options:
+        - Windows 11
+        - Windows 10
+        - Other or unsure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part
+      options:
+        - Text encryption or decryption
+        - File encryption or decryption
+        - Legacy format compatibility
+        - User interface, theming or DPI
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Screenshots help for UI problems. Please include both themes if relevant.

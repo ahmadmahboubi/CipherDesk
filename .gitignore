@@ -1,0 +1,53 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Ll]og/
+artifacts/
+publish/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+project.lock.json
+project.assets.json
+
+# Test results
+TestResults/
+[Tt]est[Rr]esult*/
+coverage*.json
+coverage*.xml
+coverage*.info
+*.coverage
+*.trx
+
+# Generated icon (produced from the SVG - see assets/icons/README.md)
+assets/icons/*.ico
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local secrets and scratch files
+*.local.json
+scratch/
