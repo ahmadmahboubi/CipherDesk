@@ -11,11 +11,9 @@ No cloud. No telemetry. No accounts. Your data stays on your machine.
 ## Screenshots
 
 | Light | Dark |
-| ----- | ---- |
-|       |      |
-|       |      |
-
-> Screenshots will be added here once the final Windows UI captures are available.
+|---|---|
+| ![Text workspace, light theme](assets/screenshots/text-light.png) | ![Text workspace, dark theme](assets/screenshots/text-dark.png) |
+| ![File workspace, light theme](assets/screenshots/files-light.png) | ![Password strength and toast, dark theme](assets/screenshots/password-dark.png) |
 
 ---
 
