@@ -15,7 +15,7 @@ namespace CipherDesk.App.Dialogs;
 public sealed class AboutDialog : Form
 {
     private const string ProjectUrl =
-        "https://github.com/your-org/cipherdesk";
+        "https://github.com/ahmadmahboubi/cipherdesk";
 
     public AboutDialog()
     {
